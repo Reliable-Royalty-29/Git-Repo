@@ -3,6 +3,10 @@ from langchain_openai import AzureOpenAI
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 from langchain.prompts import PromptTemplate
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 OPENAI_API_VERSION = "2023-12-01-preview"
