@@ -4,7 +4,7 @@ import os
 from langchain_openai import AzureOpenAI
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
-from langchain.prompts import PromptTemplate
+from langchain.prompts import PromptTemplatem
 
 st.title("Restaurant Name Generator")
 
