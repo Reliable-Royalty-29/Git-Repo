@@ -6,7 +6,7 @@
 #langchain_helper==0.0.1 
 #python-dotenv==1.0.1
 
-streamlit
+streamlit==1.33.0
 langchain-openai==1.0.0
-python-dotenv
+python-dotenv==1.0.1
 
