@@ -1,0 +1,6 @@
+langchain==0.14
+langchain_community==0.0.16
+langchain_core==0.1.17
+streamlit==1.30.0
+AzureOpenAI==2023-12-01-preview
+langchain_helper==0.0.1 
