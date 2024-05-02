@@ -50,6 +50,6 @@ def test(cuisine):
 
     return res
 
-# if __name__ == "__main__":
-#     print(test("Arbic"))
+if __name__ == "__main__":
+    print(test("Indian"))
 
