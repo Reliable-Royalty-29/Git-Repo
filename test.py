@@ -11,4 +11,4 @@ if cuisine:
     menu_items = response['menu_items'].strip().split(",")
     st.write("**Menu Items**")
     for items in menu_items:
-        st.text(items)
+        st.text(":", items)
