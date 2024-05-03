@@ -12,10 +12,10 @@ if cuisine:
     # Display menu items with proper formatting
     menu_items = response['menu_items'].strip().split(",")
     st.write("**Menu Items**")
-     for item in menu_items:
+    for item in menu_items:
         if "(" in item:
             # Display only the dish name and description (remove additional items)
             dish_name, dish_description = item.split("(", 1)
-            st.write(f"{dish_name.strip()} ({dish_description.strip()}")
+            st.write(f"{dish_name.strip()} ({dish_description.strip()})")
         else:
             st.write(item)
