@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-OPENAI_API_VERSION = "2023-12-01-preview"
+OPENAI_API_VERSION = "2024-02-01"
 azure_openai_api_key = os.environ.get('AZURE_OPENAI_API_KEY')
 
 llm = AzureOpenAI(
