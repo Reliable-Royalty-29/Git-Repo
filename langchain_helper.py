@@ -15,41 +15,38 @@ azure_openai_api_key = os.environ.get('AZURE_OPENAI_API_KEY')
 llm = AzureOpenAI(
     deployment_name="Dheeman",
     api_version=OPENAI_API_VERSION,
-    azure_endpoint="https://d29.openai.azure.com/",
+    azure_endpoint="https://d2912.openai.azure.com/",
     temperature=0.7
 )
 
-def test(cuisine):
-    # Define PromptTemplate for restaurant name suggestion
+def generate_restaurant_name_and_items(cuisine):
+    # Chain 1: Restaurant Name
     prompt_template_name = PromptTemplate(
         input_variables=['cuisine'],
         template="I want to open a restaurant for {cuisine} food. Suggest a fancy name for this."
     )
 
-    # Create LLMChain for restaurant name suggestion
     name_chain = LLMChain(llm=llm, prompt=prompt_template_name, output_key="restaurant_name")
 
-    # Define PromptTemplate for menu items suggestion
+    # Chain 2: Menu Items
     prompt_template_items = PromptTemplate(
         input_variables=['restaurant_name'],
-        template="Suggest some menu items for {restaurant_name}"
+        template="""Suggest some menu items for {restaurant_name}. Return it as a comma separated string"""
     )
 
-    # Create LLMChain for menu items suggestion
     food_items_chain = LLMChain(llm=llm, prompt=prompt_template_items, output_key="menu_items")
 
-    # Create SequentialChain with both LLMChain instances
     chain = SequentialChain(
         chains=[name_chain, food_items_chain],
-        input_variables=["cuisine"],
-        output_variables=["restaurant_name", "menu_items"]
+        input_variables=['cuisine'],
+        output_variables=['restaurant_name', "menu_items"]
     )
 
-    # Execute the chain with the input value
-    res = chain({"cuisine": cuisine})
+    response = chain({'cuisine': cuisine})
 
-    return res
+    return response
 
 if __name__ == "__main__":
-    print(test("Indian"))
+    print(generate_restaurant_name_and_items("Italian"))
+
 
